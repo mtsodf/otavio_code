@@ -1346,6 +1346,7 @@ end subroutine
 
 subroutine simulate
 USE param
+USE IMSL_IMPL
 integer :: period_num, i,j,k, gov_type, random_num, ivalue, sample_num, MAXFN, num_periodos, IOPT, num_samples_nodef,&
            index_observation
 parameter (sample_num = 1000, period_num= 301, num_periodos = 120)
@@ -1363,7 +1364,7 @@ DOUBLE PRECISION, ALLOCATABLE :: mean_spread(:), mean_std_spread(:), mean_debt(:
                     
 
 INTEGER :: liquidity(period_num, sample_num), excl(period_num, sample_num), d(period_num, sample_num), i_access_sim(period_num, sample_num)
-EXTERNAL RNSET, DRNUN, DNORIN, q_fun, DUVMIF, objective_function, v0_fun, v1_fun, q_menu_fun
+EXTERNAL  DNORIN, q_fun, DUVMIF, objective_function, v0_fun, v1_fun, q_menu_fun
 
 b_zero = 0d+0  !IF THE COUNTRY IS NOT EXCLUDED AFTER A DEFAULT EPISODE ==> BORROWS AS IF IT STARTS WITH ZERO DEBT
 
