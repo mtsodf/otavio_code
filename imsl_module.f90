@@ -1,12 +1,22 @@
-module IMSL_IMPLi
+module IMSL_IMPL
 
 
 contains
 
-    subroutine RNSET(seed)
-        integer seed
-
-        CALL RANDOM_SEED(PUT = seed)
+    subroutine RNSET(ivalue)
+        INTEGER :: ivalue
+        
+        call SRAND(ivalue)
     end subroutine
+
+    subroutine DRNUN(vec_size, random_vector)
+        DOUBLE PRECISION :: random_vector(:)
+        INTEGER :: vec_size,i
+
+        do i=1, vec_size
+            random_vector(i) = rand()
+        end do
+
+    end subroutine 
 
 end module
